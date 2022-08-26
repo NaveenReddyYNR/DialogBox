@@ -1,0 +1,43 @@
+import React, { useState } from "react";
+import "./App.css";
+
+const App = () => {
+  const [open, setOpen] = useState(false);
+  const [response, setResponse] = useState(false);
+
+  const openDialogBox = () => {
+    setOpen(true);
+  };
+  const closeDialogBox = () => {
+    setOpen(false);
+  };
+  const submitRequest = () => {
+    setResponse(true);
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      {setOpen && (
+        <div>
+          Are you sure you want to open DialogBox
+          <button onClick={openDialogBox}>Click Here</button>
+        </div>
+      )}
+      {open && (
+        <div className="DialogBoxDiv">
+          <p>Are you sure want to delete?</p>
+          <button className="Btn_div" onClick={submitRequest}>
+            Submit
+          </button>
+          <button className="Btn_div" onClick={closeDialogBox}>
+            Cancel
+          </button>
+        </div>
+      )}
+      {response && <div className="DialogBoxDiv1">Submitted your data</div>}
+    </div>
+  );
+};
+
+export default App;
